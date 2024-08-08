@@ -612,7 +612,7 @@ public class CMRITLeaderboard2027 {
 
         // update the userMap with percentile
         for (User user : userMap.values()) {
-            double cf, gfgs, gfgp, lc, cc, hr, percentile;
+            double cf = 0, gfgs = 0, gfgp = 0, lc = 0, cc = 0, hr = 0, percentile = 0;
             if( maxCodeforcesRating > 0 )
             cf = (double) user.getCodeforcesRating() / maxCodeforcesRating * 100;
             if( maxGeeksforgeeksRating > 0 )
