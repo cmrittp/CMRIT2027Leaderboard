@@ -612,16 +612,23 @@ public class CMRITLeaderboard2027 {
 
         // update the userMap with percentile
         for (User user : userMap.values()) {
-            double cf = (double) user.getCodeforcesRating() / maxCodeforcesRating * 100;
-            double gfgs = (double) user.getGeeksforgeeksRating() / maxGeeksforgeeksRating * 100;
+            double cf, gfgs, gfgp, lc, cc, hr, percentile;
+            if( maxCodeforcesRating > 0 )
+            cf = (double) user.getCodeforcesRating() / maxCodeforcesRating * 100;
+            if( maxGeeksforgeeksRating > 0 )
+            gfgs = (double) user.getGeeksforgeeksRating() / maxGeeksforgeeksRating * 100;
             if (user.getgeeksforgeeksPracticeRating() == null) {
                 user.setgeeksforgeeksPracticeRating(0);
             }
-            double gfgp = (double) user.getgeeksforgeeksPracticeRating() / maxGeeksforgeeksPracticeRating * 100;
-            double lc = (double) user.getLeetcodeRating() / maxLeetcodeRating * 100;
-            double cc = (double) user.getCodechefRating() / maxCodechefRating * 100;
-            double hr = (double) user.getHackerrankRating() / maxHackerrankRating * 100;
-            double percentile = ( cf * 0.3 + gfgs*0.3  + gfgp*0.1 + lc*0.1 + cc*0.1 + hr*0.1 );
+            if( maxGeeksforgeeksPracticeRating > 0 )
+            gfgp = (double) user.getgeeksforgeeksPracticeRating() / maxGeeksforgeeksPracticeRating * 100;
+            if( maxLeetcodeRating > 0 )
+            lc = (double) user.getLeetcodeRating() / maxLeetcodeRating * 100;
+            if( maxCodechefRating > 0 )
+            cc = (double) user.getCodechefRating() / maxCodechefRating * 100;
+            if( maxHackerrankRating > 0 )
+            hr = (double) user.getHackerrankRating() / maxHackerrankRating * 100;
+            percentile = ( cf * 0.3 + gfgs*0.3  + gfgp*0.1 + lc*0.1 + cc*0.1 + hr*0.1 );
 
             user.setPercentile(percentile);
         }
